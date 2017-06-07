@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/dist/src/dispFavList.js" />
+        <item url="file://$PROJECT_DIR$/dist/src/addCityFav.js" />
+        <item url="file://$PROJECT_DIR$/dist/src/App.js" />
+        <item url="file://$PROJECT_DIR$/dist/src/getCityWeather.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/dist/src/dispFavList.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/addCityFav.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/App.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/getCityWeather.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
