@@ -15,6 +15,7 @@ var MainInterface = React.createClass({
 
             title: 'Weather Information',
             city: '',
+            saveCity: false,
             searchRes: false,
             favList: ["new york", "london", "dubai", "tokyo", "hong kong", "mumbai"]
         };
@@ -22,7 +23,7 @@ var MainInterface = React.createClass({
 
     // add cities to saved list
     addFav: function addFav() {
-        if ($.inArray(this.state.city, this.state.favList) < 0 && this.state.city !== '') {
+        if ($.inArray(this.state.city, this.state.favList) < 0 && this.state.city !== '' && this.state.saveCity) {
             var newList = this.state.favList.push(this.state.city);
             this.setState({
                 favlist: newList
@@ -45,12 +46,12 @@ var MainInterface = React.createClass({
 
     // configure react to render weather information for searched city
     getCityWeather: function getCityWeather(e) {
-
         this.setState({
             searchRes: true,
+            saveCity: this.refs.saveTo.checked,
             city: this.refs.cityName.value.toLowerCase()
         }, function () {
-            // console.log(this.state.city, this.state.searchRes);
+            // console.log(this.state.saveCity, this.state.searchRes);
             this.addFav();
         });
 
@@ -68,13 +69,8 @@ var MainInterface = React.createClass({
                 React.createElement(
                     'div',
                     { className: 'form-group' },
-                    React.createElement('div', { className: 'col-sm-2' })
-                ),
-                React.createElement(
-                    'div',
-                    { className: 'form-group' },
                     React.createElement('div', { className: 'col-sm-2' }),
-                    this.state.searchRes ? React.createElement(CityWeather, { city: this.state.city, remFav: this.remFav, remButton: false }) : null
+                    this.state.searchRes && this.state.city ? React.createElement(CityWeather, { city: this.state.city, remFav: this.remFav, remButton: false }) : null
                 ),
                 React.createElement('br', null),
                 React.createElement(
@@ -87,19 +83,25 @@ var MainInterface = React.createClass({
                     ),
                     React.createElement(
                         'div',
-                        { className: 'col-sm-6' },
+                        { className: 'col-sm-8' },
                         React.createElement('input', { type: 'text', className: 'form-control', ref: 'cityName',
                             placeholder: 'Enter name of city' })
                     )
                 ),
-                React.createElement('br', null),
                 React.createElement('div', { className: 'col-sm-2' }),
                 React.createElement(
                     'button',
-                    { type: 'submit', className: 'btn btn-default' },
+                    { type: 'submit', className: 'btn btn-lg' },
                     'Search'
+                ),
+                React.createElement('input', { style: { marginLeft: 50 }, type: 'checkbox', ref: 'saveTo' }),
+                React.createElement(
+                    'label',
+                    { style: { marginLeft: 10 } },
+                    ' Add to Saved List '
                 )
             ),
+            React.createElement('br', null),
             React.createElement('hr', null),
             React.createElement(
                 'h4',
